@@ -22,7 +22,7 @@ def admin_required(f):
 def soigneur_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
-        if not current_user.is_authenticated or current_user.role != 'soigneur':
+        if not current_user.is_authenticated or current_user.role not in ['soigneur', 'admin']:
             abort(403)  # Forbidden
         return f(*args, **kwargs)
     return decorated_function

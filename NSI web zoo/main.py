@@ -16,7 +16,7 @@ login_manager = LoginManager(app)
 
 @login_manager.user_loader # Charge l'utilisateur si il se connecte
 def load_user(id):
-    return User.query.get(int(id))
+    return db.session.get(User, int(id))
 
 class User(db.Model, UserMixin): # Définir le modèle User
     id = db.Column(db.Integer, primary_key=True)
@@ -52,11 +52,66 @@ def index():
 def about():
     return render_template("about.html")
 
-@app.route('/acceuil-soigneur')
+@app.route('/acceuil-soigneur', methods=['POST', 'GET'])
 @soigneur_required
 def acceuil_soigneur():
-    animaux = Animaux.query.all()
-    return render_template("acceuil_soigneur.html", animaux=animaux)
+    if current_user.role in ['admin', 'soigneur']:
+        if 'add' in request.form and request.method == 'POST':
+            if not current_user.is_authenticated or current_user.role not in ['soigneur', 'admin']:
+                flash("Vous n'avez pas les droits de faire ca.", 'danger')
+                return redirect(url_for('index'))
+            else:
+                animaux = Animaux(
+                    nom=request.form['nom'],
+                    race=request.form['race'],
+                    age=request.form['age'],
+                    description=request.form['description'],
+                    soin=request.form['soin'],
+                    soigneur=request.form['soigneur']
+                )
+                if animaux and bcrypt.check_password_hash(current_user.password, password=request.form['password']):
+                    db.session.add(animaux)
+                    db.session.commit()
+                    flash("Animal/Animaux ajouter avec succes.", 'success')
+                    return redirect(url_for('acceuil_soigneur'))
+                else:
+                    flash("Des informations sont manquantes.", 'danger')
+                    return redirect(url_for('acceuil_soigneur'))
+        elif 'update' in request.form and request.method == 'POST':
+            if not current_user.is_authenticated or current_user.role not in ['soigneur', 'admin']:
+                flash("Vous n'avez pas les droits de faire ca.", 'danger')
+                return redirect(url_for('index'))
+            else:
+                animaux = Animaux.query.get(request.form.get('id'))
+                animaux.nom = request.form['nom']
+                animaux.race = request.form['race']
+                animaux.age = request.form['age']
+                animaux.description = request.form['description']
+                animaux.soin = request.form['soin']
+                animaux.soigneur = request.form['soigneur']
+                if animaux and bcrypt.check_password_hash(current_user.password, password=request.form['password']):
+                    db.session.commit()
+                    flash("Animal/Animaux modifier avec succes.", 'success')
+                    return redirect(url_for('acceuil_soigneur'))
+                else:
+                    flash("Des informations sont manquantes.", 'danger')
+                    return redirect(url_for('acceuil_soigneur'))
+        elif 'delete' in request.form and request.method == 'POST':
+            if not current_user.is_authenticated or current_user.role not in ['soigneur', 'admin']:
+                flash("Vous n'avez pas les droits de faire ca.", 'danger')
+                return redirect(url_for('index'))
+            else:
+                animaux = Animaux.query.get(request.form.get('id'))
+                db.session.delete(animaux)
+                db.session.commit()
+                flash("Animal/Animaux supprimer avec succes.", 'success')
+                return redirect(url_for('acceuil_soigneur'))
+    elif not current_user.role != ('admin' or 'soigneur'):
+        flash("Vous n'etes pas autoriser a etre ici")
+        return redirect(url_for('index'))
+    soigneurs = Soigneur.query.all() # Récupere tout les soigneur dans la base de donnee
+    animaux = Animaux.query.all() # Récupere tout les animaux dans la base de donnee
+    return render_template("acceuil_soigneur.html", animaux=animaux, soigneurs=soigneurs)
 
 @app.route('/login', methods=['POST', 'GET']) # Page de connexion
 def login():

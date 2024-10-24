@@ -28,9 +28,10 @@
         <input type="number" name="age" placeholder="Age">
         <input type="text" name="description" placeholder="Description">
         <input type="text" name="soin" placeholder="Soin">
-        <select name="soigneur" id="soigneur">
-            <option value="M.Test">M.Test</option>
-            <option value="Mme.Test">Mme.Test</option>
+        <select name="soigneur" id="soigneur" required>
+            {% for soigneur in soigneurs %}
+                <option value="{{ soigneur.nom }}">{{ soigneur.nom }}</option>
+            {% endfor %}
         </select>
         <input type="password" name="password" placeholder="Mot de passe" required>
         <button type="submit" name="add" class="submit-button">Ajouter</button>
@@ -63,7 +64,15 @@
                     <td><input type="text" name="age" value="{{ animal.age }}" required></td>
                     <td><input type="text" name="description" value="{{ animal.description }}" required></td>
                     <td><input type="text" name="soin" value="{{ animal.soin }}" required></td>
-                    <td><input type="text" name="soigneur" value="{{ animal.soigneur }}" required></td>
+                    <td>
+                        <select name="soigneur" id="soigneur">
+                            {% for soigneur in soigneurs %}
+                                <option value="{{ soigneur.nom }}" {% if animal.soigneur == soigneur.nom %}selected{% endif %}>
+                                    {{ soigneur.nom }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </td>
                     <td><input type="password" name="password" value="" required></td>
                     <td>
                         <button type="submit" name="update" class="submit-button">Mettre à jour</button>
