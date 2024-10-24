@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/">
+    <title>Acceuil Emerauld Wilds Zoo | Soigneur</title>
+</head>
+<body>
+    <header>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages">
+            {% for category, message in messages %}
+                <div class="flash-message {{ category }}">
+                {{ message }}
+                </div>
+            {% endfor %}
+            </div>
+            {% endif %}
+        {% endwith %}
+    </header>
+    <!-- Ajout de la section de gestion des Animaux -->
+    <h2>Ajouter un Animal</h2>
+    <form method="post" class="form-add">
+        <input type="text" name="nom" placeholder="Prénom" required>
+        <input type="text" name="race", placeholder="Race" required>
+        <input type="number" name="age" placeholder="Age">
+        <input type="text" name="description" placeholder="Description">
+        <input type="text" name="soin" placeholder="Soin">
+        <select name="soigneur" id="soigneur">
+            <option value="M.Test">M.Test</option>
+            <option value="Mme.Test">Mme.Test</option>
+        </select>
+        <input type="password" name="password" placeholder="Mot de passe" required>
+        <button type="submit" name="add" class="submit-button">Ajouter</button>
+    </form>
+
+    <!-- Section pour afficher et modifier les informations des animaux existants -->
+    <h2>Liste des Animaux</h2>
+    <table border="1" class="animaux-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Prénom</th>
+                <th>Race</th>
+                <th>Age</th>
+                <th>Description</th>
+                <th>Soin</th>
+                <th>Soigneur</th>
+                <th>Mot De Passe</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for animal in animaux %}
+            <tr>
+                <form method="post">
+                    <input type="hidden" name="id" value="{{ animal.id }}">
+                    <td>{{ animal.id }}</td>
+                    <td><input type="text" name="nom" value="{{ animal.nom }}" required></td>
+                    <td><input type="tel" name="race" value="{{ animal.race }}"></td>
+                    <td><input type="text" name="age" value="{{ animal.age }}" required></td>
+                    <td><input type="text" name="description" value="{{ animal.description }}" required></td>
+                    <td><input type="text" name="soin" value="{{ animal.soin }}" required></td>
+                    <td><input type="text" name="soigneur" value="{{ animal.soigneur }}" required></td>
+                    <td><input type="password" name="password" value="" required></td>
+                    <td>
+                        <button type="submit" name="update" class="submit-button">Mettre à jour</button>
+                        <button type="submit" name="delete" class="submit-button">Supprimer</button>
+                    </td>
+                </form>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
