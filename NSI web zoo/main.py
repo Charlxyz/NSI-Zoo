@@ -61,6 +61,7 @@ def acceuil_soigneur():
 @app.route('/login', methods=['POST', 'GET']) # Page de connexion
 def login():
     if current_user.is_authenticated:
+        flash('Vous etes deja connecter !', 'danger')
         return redirect(url_for('index'))
     else:
         if request.method == 'POST':
