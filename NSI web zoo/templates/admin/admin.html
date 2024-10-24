@@ -6,6 +6,70 @@
     <title>Zoo Admin</title>
 </head>
 <body>
-    
+    <header>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages">
+            {% for category, message in messages %}
+                <div class="flash-message {{ category }}">
+                {{ message }}
+                </div>
+            {% endfor %}
+            </div>
+            {% endif %}
+        {% endwith %}
+    </header>
+    <!-- Ajout de la section de gestion des utilisateurs -->
+    <h2>Ajouter un Utilisateur</h2>
+    <form method="post" class="form-add">
+        <input type="text" name="username" placeholder="Nom" required>
+        <input type="email" name="email", placeholder="E-Mail" required>
+        <input type="password" name="password" placeholder="Mot de passe" required>
+        <select name="role" id="role">
+            <option value="admin">Admin</option>
+            <option value="soigneur">Soigneur</option>
+            <option value="user">Utilisateur</option>
+        </select>
+        <button type="submit" name="add" class="submit-button">Ajouter</button>
+    </form>
+        
+    <!-- Section pour afficher et modifier les informations des utilisateurs existants -->
+    <h2>Liste des Animaux</h2>
+    <table border="1" class="user-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>E-Mail</th>
+                <th>Mot De Passe</th>
+                <th>Role</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <form method="post">
+                    <input type="hidden" name="id" value="{{ user.id }}">
+                    <td>{{ user.id }}</td>
+                    <td><input type="text" name="username" value="{{ user.username }}" required></td>
+                    <td><input type="tel" name="email" value="{{ user.email }}"></td>
+                    <td><input type="password" name="password" value=""></td>
+                    <td>
+                        <select name="role" id="role">
+                            <option value="admin" {% if user.role == 'admin' %}selected{% endif %}>Admin</option>
+                            <option value="soigneur" {% if user.role == 'soigneur' %}selected{% endif %}>Soigneur</option>
+                            <option value="user" {% if user.role == 'user' %}selected{% endif %}>Utilisateur</option>
+                        </select>
+                    </td>
+                    <td>
+                        <button type="submit" name="update" class="submit-button">Mettre à jour</button>
+                        <button type="submit" name="delete" class="submit-button">Supprimer</button>
+                    </td>
+                </form>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </body>
 </html>

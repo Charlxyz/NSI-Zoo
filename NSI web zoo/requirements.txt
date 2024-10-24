@@ -82,7 +82,6 @@ python-engineio==4.9.1
 python-socketio==5.11.3
 pytweening==1.2.0
 pytz==2024.1
-pywin32==306
 pywin32-ctypes==0.2.2
 redis==5.0.8
 requests==2.32.3

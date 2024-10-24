@@ -187,10 +187,58 @@ def logout():
     flash("Déconnexion réussie !", 'success')
     return redirect(url_for('index'))
 
-@app.route('/admin') # Page de la gestion d'utilisateur et des animaux
+@app.route('/admin', methods=['POST', 'GET']) # Page de la gestion d'utilisateur et des animaux
 @admin_required
 def admin():
-    return render_template("./admin/admin.html")
+    if not current_user.is_authenticated or current_user.role != 'admin':
+        flash("Vous n'avez pas les droits de faire ca.", 'danger')
+        return redirect(url_for('index'))
+    else:
+        if 'delete' in request.form and request.method == 'POST':
+            user = User.query.get(request.form.get('id'))
+            db.session.delete(user)
+            db.session.commit()
+            flash("Utilisateur supprimé.", 'success')
+            return redirect(url_for('admin'))
+
+        elif 'update' in request.form and request.method == 'POST':
+            user = User.query.get(request.form.get('id'))
+            user.username = request.form['username']
+            user.email = request.form['email']
+            if request.form['password'] not in ['', None]: # Verrifie que le nouveau mot de passe ne soit pas vide 
+                user.password = bcrypt.generate_password_hash(request.form['password']).decode('utf-8')
+            user.role = request.form['role']
+            db.session.commit()
+            flash("Utilisateur mis à jour.", 'success')
+            return redirect(url_for('admin'))
+
+        elif 'add' in request.form and request.method == 'POST':
+            username = request.form['username']
+            email = request.form['email']
+            password = request.form['password']
+            role = request.form['role']
+
+            username_exists = User.query.filter_by(username=username).first()
+            email_exists = User.query.filter_by(email=email).first()
+
+            if username_exists:
+                flash(f"{username} est dejà utiliser.", 'danger')
+            elif email_exists:
+                flash(f"{email} est dejà utiliser.", 'danger')
+            else:
+                hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
+                user = User(
+                    username=username,
+                    email=email,
+                    password=hashed_password,
+                    role=role
+                )
+                db.session.add(user)
+                db.session.commit()
+                flash("Utilisateur ajouté.", 'success')
+                return redirect(url_for('admin'))
+    users = User.query.all()
+    return render_template("./admin/admin.html", users=users)
 
 # Création des tables de la base de donnee
 with app.app_context():
