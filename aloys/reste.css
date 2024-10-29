@@ -1,0 +1,371 @@
+/* Réinitialisation générale */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body{
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Corps de la page */
+body {
+    font-family: 'Poppins', sans-serif; /* Application de la nouvelle police */
+    padding-top: 60px; /* Espace pour le header fixe */
+    background-color: #FAF0E6; /* Beige lin délicat */
+    flex: 1;
+}
+
+/* Conteneur principal pour centrer le contenu */
+.container {
+    width: 60%; /* Largeur à 60% */
+    margin: 0 auto;
+    flex: 1;
+}
+
+/* Header */
+header {
+    background-color: #394228; /* Couleur claire */
+    color: #FAF0E6; /* Texte en noir */
+    padding: 5px 0; /* Diminuer le padding vertical pour le header */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: background-color 0.3s ease, padding 0.3s ease;
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    align-items: center; /* Centre verticalement les éléments */
+    justify-content: center; /* Centre horizontalement tous les éléments */
+    height: 50px; /* Réduction de la hauteur pour un header moins volumineux */
+}
+
+/* Liens de navigation */
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0; /* Suppression de la marge */
+}
+
+nav ul li {
+    margin: 0 2px; /* Réduire l'espace entre chaque lien pour les rapprocher encore plus */
+}
+nav ul li a {
+    color: #FAF0E6; /* Texte en noir */
+    text-decoration: none;
+    font-size: 24px; /* Augmenter la taille de police */
+    font-weight: 600; /* Gras pour le texte */
+    padding: 5px; /* Diminuer le padding autour des liens */
+    transition: color 0.3s ease; /* Transition pour le changement de couleur */
+}
+
+nav ul li a:hover {
+    color: #B8E986; /* Gris clair au survol */
+}
+
+/* Logo centré */
+.logo img {
+    max-width: 120px; /* Augmentez la taille du logo */
+    height: auto;
+}
+
+.logo img {
+    max-width: 70px; /* Augmentez la taille du logo */
+    height: auto;
+}
+
+.nav-left, .nav-right {
+    display: flex;
+    flex: 1; /* Prend toute la place disponible */
+    justify-content: center; /* Centre les éléments */
+    margin: 0 5px; /* Réduit l'espace autour des groupes de liens */
+}
+
+
+.nav-left {
+    margin-right: 5px; /* Réduit l'espace à droite des liens de gauche */
+}
+
+.nav-right {
+    margin-left: 5px; /* Réduit l'espace à gauche des liens de droite */
+}
+
+/* Hero Section */
+/* Vidéo en arrière-plan */
+.video-container {
+    position: absolute; /* Positionner la vidéo */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Prendre toute la hauteur */
+    z-index: -1; /* Envoyer la vidéo derrière le contenu */
+    overflow: hidden; /* Pour éviter les débordements */
+}
+
+.video-container video {
+    width: 100%; /* S'assurer que la vidéo prend toute la largeur */
+    height: 100%; /* S'assurer que la vidéo prend toute la hauteur */
+    object-fit: cover; /* Couvrir l'élément sans déformer */
+}
+
+/* Section Hero */
+.hero {
+    background-color: transparent; /* Enlever le fond */
+    height: 80vh; /* Garder la même hauteur */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FAF0E6; /* Couleur du texte */
+    text-align: center;
+    position: relative; /* Positionner relativement pour les éléments enfants */
+    z-index: 1; /* S'assurer que le contenu est au-dessus de la vidéo */
+}
+
+.hero h2 {
+    font-size: 50px;
+}
+
+.hero p {
+    font-size: 24px;
+    margin: 20px 0;
+}
+
+.hero .btn {
+    background-color: #1DB954; /* Vert perroquet */
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.hero .btn:hover {
+    background-color: #32A852; /* Vert gazon */
+}
+
+/* Section Nos Animaux */
+.animaux {
+    padding: 50px 0;
+    background-color: #228B22; /* Vert forêt */
+    text-align: center;
+}
+
+.animaux h2 {
+    font-size: 36px;
+    margin-bottom: 40px;
+    color: #FAF0E6; /* Beige lin délicat */
+}
+
+.animal-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.animal {
+    background-color: #B8E986; /* Vert pomme */
+    border: 2px solid #4B5320; /* Vert bouteille */
+    padding: 20px;
+    border-radius: 10px;
+    margin: 10px;
+    width: 30%;
+}
+
+.animal img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.animal h3 {
+    font-size: 24px;
+    margin: 15px 0 10px;
+    color: #013220; /* Vert sapin */
+}
+
+.animal p {
+    font-size: 16px;
+    color: #013220; /* Vert sapin */
+}
+
+/* Section Tarifs */
+.tarifs {
+    padding: 50px 0;
+    text-align: center;
+    background-color: #FAF0E6; /* Beige lin délicat */
+}
+
+.tarifs h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #013220; /* Vert sapin */
+}
+
+.tarifs ul {
+    list-style: none;
+    font-size: 20px;
+    color: #013220; /* Vert sapin */
+}
+
+.tarifs ul li {
+    margin: 10px 0;
+}
+
+/* Footer */
+footer {
+    background-color: #394228; /* Vert encore plus foncé */
+    color: #FAF0E6; /* Beige lin délicat */
+    text-align: center;
+    padding: 20px 0;
+    margin-top: auto;
+}
+
+footer p {
+    margin: 10px 0;
+}
+
+footer a {
+    color: #FAF0E6; /* Beige lin délicat */
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #B8E986; /* Vert pomme */
+}
+
+/* Conteneur du formulaire */
+.contact-form {
+    max-width: 1000px; /* Largeur maximale augmentée */
+    margin: 50px auto; /* Centre le formulaire horizontalement */
+    padding: 40px;
+    background-color: #FAF0E6; /* Beige lin délicat */
+    border: 2px solid #394228; /* Bordure verte foncée */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form h2 {
+    text-align: center;
+    color: #013220; /* Vert sapin */
+    margin-bottom: 20px;
+}
+
+/* Disposition en deux colonnes */
+.form-row {
+    display: flex;
+    gap: 40px; /* Plus d'espacement entre les colonnes */
+}
+
+/* Colonne individuelle */
+.form-column {
+    flex: 1;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #013220; /* Vert sapin */
+    font-weight: 600;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form input[type="tel"],
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #394228; /* Bordure verte foncée */
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Agrandir la zone de texte pour le message */
+.contact-form textarea {
+    height: 300px; /* Augmente la hauteur pour plus de visibilité */
+    resize: vertical;
+}
+
+/* Bouton Envoyer */
+.form-button {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.contact-form button {
+    padding: 10px 30px;
+    background-color: #1DB954; /* Vert perroquet */
+    color: #FAF0E6; /* Beige lin délicat */
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.contact-form button:hover {
+    background-color: #32A852; /* Vert gazon */
+}
+
+/* Section Tarifs */
+.tarifs-section {
+    text-align: center;
+    padding: 50px 0;
+    background-color: #FAF0E6; /* Beige lin délicat */
+}
+
+.tarifs-section h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+    color: #394228; /* Vert foncé */
+}
+
+/* Conteneur des cartes de tarifs */
+.tarifs-container {
+    display: flex;
+    flex-direction: row; /* Aligne les cartes horizontalement */
+    justify-content: center;
+    gap: 30px;
+}
+
+/* Cartes individuelles */
+.tarif-card {
+    background-color: #3A6B35; /* Vert plus foncé */
+    color: #FAF0E6; /* Texte clair */
+    border-radius: 10px;
+    padding: 20px;
+    width: 250px; /* Largeur des cartes */
+    height: 400px; /* Hauteur des cartes */
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.tarif-card h3 {
+    font-size: 28px; /* Taille du titre */
+    margin-bottom: 10px;
+}
+
+/* Séparateurs pour chaque section */
+.tarif-card p {
+    font-size: 18px;
+    margin: 10px 0;
+    padding: 10px 0;
+    border-top: 1px solid rgba(250, 240, 230, 0.3); /* Ligne de séparation discrète */
+}
+
+.tarif-card p:first-of-type {
+    border-top: none; /* Pas de ligne en haut de la première section */
+}
+
