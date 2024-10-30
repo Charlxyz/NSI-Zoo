@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoo Nature & Aventure</title>
+    <link rel="icon" type="image/png" href="../static/img/log.jpg">
+    <link rel="stylesheet" href="../static/css/reste.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script type="text/javascript">
+        function sendMail() {
+          var data = {
+            service_id: 'service_yrfld8r', // ID EmailJS
+            template_id: 'template_jtq3tb9', // Template ID EmailJS
+            user_id: 'l1cj7U3MonvVYvQbV', // Public Key EmailJS
+            template_params: {
+              'user_name': document.getElementById('name').value,
+              'user_email': document.getElementById('mail').value, // email de l'utilisateur
+              'user_message': document.getElementById('msg').value,
+              'user_phone': document.getElementById('phone').value
+            }
+          };
+  
+          $.ajax('https://api.emailjs.com/api/v1.0/email/send', {
+            type: 'POST',
+            data: JSON.stringify(data),
+            contentType: 'application/json'
+          }).done(function() {
+            alert('Votre email a bien été envoyé!');
+          }).fail(function(error) {
+            alert('Oups... ' + JSON.stringify(error));
+          });
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <!-- Liens à gauche du logo -->
+                <ul class="nav-left">
+                    <li><a href="/">Accueil</a></li>
+                    <li><a href="#">Nos Animaux</a></li>
+                </ul>
+                
+                <!-- Logo au centre -->
+                <div class="logo">
+                    <img src="../static/img/log.jpg" alt="Logo du zoo">
+                </div>
+                
+                <!-- Liens à droite du logo -->
+                <ul class="nav-right">
+                    <li><a href="/tarifs">Tarifs</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="contact-form">
+        <h2>Contactez-nous</h2>
+        <form onsubmit="sendMail(); return false;">
+            <div class="form-row">
+                <!-- Colonne gauche pour Nom, Email, et Téléphone -->
+                <div class="form-column">
+                    <label for="name">Nom :</label>
+                    <input type="text" id="name" name="name" required>
+    
+                    <label for="email">Email :</label>
+                    <input type="email" id="mail" name="email" required>
+    
+                    <label for="phone">Téléphone :</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <!-- Colonne droite pour le Message -->
+                <div class="form-column">
+                    <label for="message">Message :</label>
+                    <textarea id="msg" name="message" rows="10" required></textarea>
+                </div>
+            </div>
+            <!-- Bouton Envoyer centré -->
+            <div class="form-button">
+                <button type="submit">Envoyer</button>
+            </div>
+        </form>
+    </div>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Zoo Emeral Wilds - Tous droits réservés</p>
+            <p>Suivez-nous sur nos réseaux sociaux : 
+                <a href="https://www.facebook.com/">Facebook</a> | <a href="https://www.instagram.com/">Instagram</a> | <a href="https://x.com/">Twitter</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -48,9 +48,13 @@ class Soigneur(db.Model):
 def index():
     return render_template("index.html")
 
-@app.route('/about')
-def about():
-    return render_template("about.html")
+@app.route('/contact')
+def contact():
+    return render_template("contact.html")
+
+@app.route('/tarifs')
+def tarifs():
+    return render_template("tarifs.html")
 
 @app.route('/acceuil-soigneur', methods=['POST', 'GET'])
 @soigneur_required
