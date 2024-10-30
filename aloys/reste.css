@@ -369,3 +369,38 @@ footer a:hover {
     border-top: none; /* Pas de ligne en haut de la première section */
 }
 
+
+
+
+
+
+
+/* Conteneur du formulaire */
+.form-container {
+    max-width: 400px; /* Largeur maximale */
+    margin: 0 auto; /* Centre le conteneur */
+    text-align: center; /* Centre le texte à l'intérieur */
+    padding: 20px; /* Ajoute un peu d'espace à l'intérieur du conteneur */
+    background-color: #FAF0E6; /* Fond beige lin */
+    border: 2px solid #394228; /* Bordure verte foncée */
+    border-radius: 10px; /* Coins arrondis */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre pour un léger effet de profondeur */
+}
+
+/* Style des phrases de redirection */
+.redirect {
+    margin-top: 10px; /* Marge au-dessus de la phrase */
+    font-size: 14px; /* Taille de police */
+    color: #394228; /* Couleur du texte pour la redirection */
+}
+
+.redirect a {
+    color: #394228; /* Couleur du lien */
+    text-decoration: none; /* Pas de soulignement */
+    font-weight: 600; /* Texte en gras pour le lien */
+}
+
+.redirect a:hover {
+    text-decoration: underline; /* Souligner au survol */
+    color: #1DB954; /* Changement de couleur au survol pour plus d'interactivité */
+}

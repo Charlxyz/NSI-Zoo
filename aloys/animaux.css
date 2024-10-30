@@ -1,0 +1,141 @@
+/* Réinitialisation générale */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Corps de la page */
+body {
+    font-family: 'Poppins', sans-serif; /* Application de la nouvelle police */
+    padding-top: 60px; /* Espace pour le header fixe */
+    background-color: #FAF0E6; /* Beige lin délicat */
+}
+
+/* Conteneur principal pour centrer le contenu */
+.container {
+    width: 80%; /* Largeur à 80% */
+    margin: 0 auto; /* Centre le conteneur */
+}
+
+/* Header */
+header {
+    background-color: #394228; /* Couleur claire */
+    color: #FAF0E6; /* Texte en noir */
+    padding: 5px 0; /* Diminuer le padding vertical pour le header */
+    position: fixed; /* Fixer le header en haut */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+/* Titre des animaux */
+.animal-title {
+    text-align: center; /* Centre le titre */
+    margin-top: 70px; /* Marge pour le titre sous le header */
+    font-size: 36px; /* Taille du texte du titre */
+    margin-bottom: 20px; /* Marge en bas du titre */
+}
+
+/* Navigation */
+nav {
+    display: flex; /* Disposition en flexbox */
+    align-items: center; /* Centre verticalement les éléments */
+    justify-content: center; /* Centre horizontalement tous les éléments */
+    height: 50px; /* Hauteur du header */
+}
+
+/* Liens de navigation */
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0; /* Suppression de la marge */
+}
+
+nav ul li {
+    margin: 0 2px; /* Espace entre chaque lien */
+}
+
+nav ul li a {
+    color: #FAF0E6; /* Texte en noir */
+    text-decoration: none;
+    font-size: 24px; /* Taille de police */
+    font-weight: 600; /* Gras pour le texte */
+    padding: 5px; /* Diminuer le padding autour des liens */
+    transition: color 0.3s ease; /* Transition pour le changement de couleur */
+}
+
+nav ul li a:hover {
+    color: #B8E986; /* Couleur au survol */
+}
+
+/* Logo centré */
+.logo img {
+    max-width: 70px; /* Augmentez la taille du logo */
+    height: auto; /* Garde l'aspect ratio */
+}
+
+/* Section des animaux */
+.animals-grid {
+    display: flex; /* Flex pour les animaux */
+    flex-direction: column; /* Colonne pour les animaux */
+}
+
+/* Carte d'animal */
+.animal {
+    display: flex; /* Flex pour aligner l'image et les informations */
+    margin-bottom: 20px; /* Espace entre les cartes */
+    padding: 15px; /* Padding à l'intérieur des cartes */
+    background-color: #ffffff; /* Fond blanc pour les cartes */
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Ombre légère */
+}
+
+/* Image de l'animal */
+.animal-image {
+    flex: 1; /* L'image prend 50% de la largeur */
+}
+
+/* Informations de l'animal */
+.animal-info {
+    flex: 2; /* Les informations prennent l'autre 50% */
+    padding-left: 20px; /* Espace entre l'image et le texte */
+}
+
+/* Bouton de modification */
+.edit-btn {
+    background-color: #394228; /* Fond du bouton */
+    color: #FAF0E6; /* Texte en noir */
+    border: none; /* Pas de bordure */
+    padding: 10px 15px; /* Padding pour le bouton */
+    border-radius: 5px; /* Coins arrondis pour le bouton */
+    cursor: pointer; /* Curseur pointer */
+    transition: background-color 0.3s ease; /* Transition pour le changement de couleur */
+}
+
+.edit-btn:hover {
+    background-color: #B8E986; /* Couleur au survol */
+}
+
+/* Footer */
+footer {
+    background-color: #394228; /* Vert encore plus foncé */
+    color: #FAF0E6; /* Beige lin délicat */
+    text-align: center;
+    padding: 20px 0;
+    margin-top: auto;
+}
+
+footer p {
+    margin: 10px 0;
+}
+
+footer a {
+    color: #FAF0E6; /* Beige lin délicat */
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #B8E986; /* Vert pomme */
+}

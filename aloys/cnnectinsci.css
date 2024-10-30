@@ -1,0 +1,120 @@
+/* Réinitialisation générale */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Corps de la page */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Couleur de fond global */
+body {
+    font-family: 'Poppins', sans-serif; /* Application de la nouvelle police */
+    background-color: #FAF0E6; /* Beige lin délicat */
+    position: relative; /* Pour les taches vertes */
+    justify-content: center; /* Centre le contenu verticalement */
+}
+
+/* Taches vertes dans le fond */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 10% 10%, rgba(1, 50, 32, 0.2), transparent 30%),
+                radial-gradient(circle at 90% 90%, rgba(34, 139, 34, 0.2), transparent 30%),
+                radial-gradient(circle at 50% 70%, rgba(184, 233, 134, 0.2), transparent 30%);
+    z-index: 0; /* Envoie les taches derrière le contenu */
+}
+
+/* Conteneur principal pour centrer le contenu */
+.container {
+    width: 60%; /* Largeur à 60% */
+    margin: 0 auto;
+    flex: 1;
+}
+
+/* Conteneur du formulaire */
+.form-container {
+    max-width: 400px; /* Largeur maximale */
+    margin: 0 auto; /* Centre le conteneur */
+    padding: 20px; /* Ajoute un peu d'espace à l'intérieur du conteneur */
+    background-color: white; /* Fond blanc pour le formulaire */
+    border: 2px solid #394228; /* Bordure verte foncée */
+    border-radius: 10px; /* Coins arrondis */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre pour un léger effet de profondeur */
+    position: relative; /* Pour que le formulaire soit au-dessus des taches */
+    z-index: 1; /* Assure que le formulaire est au-dessus */
+    opacity: 0.9; /* Ajout de l'opacité au formulaire */
+}
+
+/* Style des titres de formulaire */
+.form-title {
+    text-align: center; /* Centre le titre */
+    margin-bottom: 20px; /* Ajoute un espace en bas du titre */
+    color: #013220; /* Vert sapin pour le titre */
+    opacity: 0.8; /* Opacité du titre */
+}
+
+/* Style des labels */
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #013220; /* Vert sapin */
+    font-weight: 600; /* Gras pour le texte */
+    font-size: 16px; /* Ajuste la taille de police */
+}
+
+/* Style des inputs */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #394228; /* Bordure verte foncée */
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Bouton de soumission */
+button {
+    padding: 10px 30px;
+    background-color: #1DB954; /* Vert perroquet */
+    color: #FAF0E6; /* Beige lin délicat */
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #32A852; /* Vert gazon */
+}
+
+/* Style des phrases de redirection */
+.redirect {
+    margin-top: 10px; /* Marge au-dessus de la phrase */
+    font-size: 14px; /* Taille de police */
+    color: #394228; /* Couleur du texte pour la redirection */
+}
+
+.redirect a {
+    color: #394228; /* Couleur du lien */
+    text-decoration: none; /* Pas de soulignement */
+    font-weight: 600; /* Texte en gras pour le lien */
+}
+
+.redirect a:hover {
+    text-decoration: underline; /* Souligner au survol */
+    color: #1DB954; /* Changement de couleur au survol pour plus d'interactivité */
+}
