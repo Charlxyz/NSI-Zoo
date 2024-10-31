@@ -1,46 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../static/css/">
-    <title>Emerauld Wilds Zoo Inscription</title>
+    <title>Inscription</title>
+    <link rel="stylesheet" href="../../static/css/cnnectinsci.css">
 </head>
 <body>
-    <header>
-        {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            <div class="flash-messages">
-            {% for category, message in messages %}
-                <div class="flash-message {{ category }}">
-                {{ message }}
-                </div>
-            {% endfor %}
-            </div>
-            {% endif %}
-        {% endwith %}
-    </header>
-    <h2>Inscription</h2>
-    <div class="UserRegister">
+
+    <h1 class="form-title">Inscription</h1>
+    
+    <div class="form-container">
         <form action="/register" method="POST">
-            <div class="UserName">
-                <label for="username">Nom d'utilisateur:</label><br>
-                <input type="text" name="username" id="username" minlength="3" required>
-            </div>
-            <div class="email">
-                <label for="email">E-Mail:</label><br>
-                <input type="email" name="email" id="email" pattern="^[A-Za-zÀ-ÖØ-Ýà-öø-ÿ0-9._%+-]+@[A-Za-zÀ-ÖØ-Ýà-öø-ÿ0-9.-]+\.[A-Za-z]{2,}$" required>
-            </div>
-            <div class="Password">
-                <label for="password">Mot De Passe:</label><br>
-                <input type="password" name="password" id="password" minlength="3" required>
-            </div>
-            <div class="UserPasswordCheck">
-                <label for="passwordcheck">Mot De Passe:</label><br>
-                <input type="password" name="passwordcheck" id="passwordcheck" minlength="3" required>
-            </div>
-            <button type="submit" value="inscription">Inscription</button>  
+            <label for="username">Nom d'utilisateur :</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="email">Email :</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Mot de passe :</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="passwordcheck">Confirmer le mot de passe :</label>
+            <input type="password" id="passwordcheck" name="passwordcheck" required>
+
+            <button type="submit">S'inscrire</button>
         </form>
+        
+        <p class="redirect">Déjà un compte ? <a href="/login">Connectez-vous ici</a></p>
     </div>
 </body>
 </html>

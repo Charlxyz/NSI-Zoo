@@ -34,8 +34,10 @@ class Animaux(db.Model): # Définir le modèle Animaux
     race = db.Column(db.String(50), nullable=False)
     age = db.Column(db.Integer, nullable=False)
     description = db.Column(db.String(200), nullable=False)
+    genre = db.Column(db.String(20), nullable=False)
     soin = db.Column(db.String(200), nullable=True)
     soigneur = db.Column(db.String(200), nullable=False)
+    image = db.Column(db.String(200), nullable=True)
 
     def __repr__(self):
         return f'<Animaux {self.nom}>'
@@ -70,8 +72,10 @@ def acceuil_soigneur():
                     race=request.form['race'],
                     age=request.form['age'],
                     description=request.form['description'],
+                    genre=request.form['genre'],
                     soin=request.form['soin'],
-                    soigneur=request.form['soigneur']
+                    soigneur=request.form['soigneur'],
+                    image=request.form['image']
                 )
                 if animaux and bcrypt.check_password_hash(current_user.password, password=request.form['password']):
                     db.session.add(animaux)
@@ -91,8 +95,10 @@ def acceuil_soigneur():
                 animaux.race = request.form['race']
                 animaux.age = request.form['age']
                 animaux.description = request.form['description']
+                animaux.genre = request.form['genre']
                 animaux.soin = request.form['soin']
                 animaux.soigneur = request.form['soigneur']
+                animaux.image = request.form['image']
                 if animaux and bcrypt.check_password_hash(current_user.password, password=request.form['password']):
                     db.session.commit()
                     flash("Animal/Animaux modifier avec succes.", 'success')
@@ -243,6 +249,53 @@ def admin():
                 return redirect(url_for('admin'))
     users = User.query.all()
     return render_template("./admin/admin.html", users=users)
+
+@app.route('/animaux', methods=['POST', 'GET'])
+def animaux():
+    animaux = Animaux.query.all()
+
+    if request.method == 'POST' and current_user.is_authenticated:
+        if 'update' in request.form and current_user.role in ['soigneur', 'admin']:
+            animal = Animaux.query.get(request.form.get('id'))
+
+            if animal:
+                animal.nom = request.form['nom']
+                animal.race = request.form['race']
+                animal.age = request.form['age']
+                animal.description = request.form['description']
+                animal.genre = request.form['genre']
+                animal.soin = request.form['soin']
+                animal.soigneur = request.form['soigneur']
+                animal.image = request.form['image']
+
+                if bcrypt.check_password_hash(current_user.password, request.form['password']):
+                    db.session.commit()
+                    flash("Animal mis à jour avec succès.", 'success')
+                    return redirect(url_for('animaux'))
+                else:
+                    flash("Mot de passe incorrect.", 'danger')
+            else:
+                flash("Animal non trouvé.", 'danger')
+        elif 'delete' in request.form and current_user.role in ['soigneur', 'admin']:
+            animal = Animaux.query.get(request.form.get('id'))
+            if animal:
+                if bcrypt.check_password_hash(current_user.password, request.form['password']):
+                    db.session.delete(animal)
+                    db.session.commit()
+                    flash("Animal supprimé avec succès.", 'success')
+                    return redirect(url_for('animaux'))
+                else:
+                    flash("Mot de passe incorrect.", 'danger')
+            else:
+                flash("Animal non trouvé.", 'danger')
+        flash("Des informations sont manquantes.", 'danger')
+        return redirect(url_for('animaux'))
+
+    if current_user.role in ['admin', 'soigneur']:
+        soigneurs = Soigneur.query.all()
+        return render_template("./animaux.html", animaux=animaux, soigneurs=soigneurs)
+
+    return render_template("./animaux.html", animaux=animaux)
 
 # Création des tables de la base de donnee
 with app.app_context():

@@ -1,40 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/">
-    <title>Emerauld Wilds Zoo Connexion</title>
+    <title>Connexion</title>
+    <link rel="stylesheet" href="../../static/css/cnnectinsci.css">
 </head>
 <body>
-    <header>
-        {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            <div class="flash-messages">
-            {% for category, message in messages %}
-                <div class="flash-message {{ category }}">
-                {{ message }}
-                </div>
-            {% endfor %}
-            </div>
-            {% endif %}
-        {% endwith %}
-    </header>
-    <h2>Connexion</h2>
-    <div>
-        <form action="/login" method="POST">
-            <div class="UserLogin">
-                <div class="email">
-                    <label for="email">E-Mail:</label><br>
-                    <input type="email" id="email" name="email" minlength="3" pattern="^[A-Za-zÀ-ÖØ-Ýà-öø-ÿ0-9._%+-]+@[A-Za-zÀ-ÖØ-Ýà-öø-ÿ0-9.-]+\.[A-Za-z]{2,}$" required>
-                </div>
-                <div class="password">
-                    <label for="password">Mot de passe:</label><br>
-                    <input type="password" id="password" name="password" minlength="3" required>
-                </div>
-                <button type="submit">Connexion</button>
-            </div>
+
+    <h1 class="form-title">Connexion</h1>
+    
+    <div class="form-container">
+        <form action="#" method="POST">
+            <label for="email">Email :</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Mot de passe :</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Se connecter</button>
         </form>
+        
+        <p class="redirect">Pas encore de compte ? <a href="/register">Inscrivez-vous ici</a></p>
     </div>
 </body>
 </html>

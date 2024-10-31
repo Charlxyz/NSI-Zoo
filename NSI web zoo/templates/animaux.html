@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoo Nature & Aventure</title>
+    <link rel="icon" type="image/png" href="../static/img/log.jpg">
+    <link rel="stylesheet" href="../static/css/animaux.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <ul class="nav-left">
+                    <li><a href="/">Accueil</a></li>
+                    <li><a href="/animaux">Nos Animaux</a></li>
+                </ul>
+                
+                <!-- Logo au centre -->
+                <div class="logo">
+                    <img src="../static/img/log.jpg" alt="Logo du zoo">
+                </div>
+                
+                <ul class="nav-right">
+                    <li><a href="/tarifs">Tarifs</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Section des animaux -->
+    <section id="animals-section">
+        <h2 class="animal-title">Nos Animaux</h2>
+        <div class="animals-grid">
+            <!-- Carte pour chaque animal -->
+            {% for animal in animaux %}
+            <div class="animal">
+                <div class="animal-image">
+                    <img src="{{ animal.image }}" alt="{{ animal.race }}">
+                </div>
+                <div class="animal-info">
+                    <h3>{{ animal.nom }} ({{ animal.race }})</h3>
+                    {% if animal.soin not in [None, '', ' '] %}
+                        <p>Dernière visite médicale : {{ animal.soin }}</p>
+                    {% endif %}
+                    <p>Age : {{ animal.age }} an(s)</p>
+                    <p>Description : {{ animal.description }}</p>
+                    <p>Genre : {{ animal.genre }}</p>
+                    {% if current_user.role in ['admin', 'soigneur'] %}
+                    <p>Soigneur : {{ animal.soigneur }}</p>
+                        <button class="edit-btn" data-modal="modal-{{ animal.nom }}-edit">Modifier</button>
+                        <button class="delete-btn" data-modal="modal-{{ animal.nom }}-delete">Supprimer</button>
+
+                    <!-- Fenêtre modale pour modifier les informations de l'animal -->
+                    <div id="modal-{{ animal.nom }}-edit" class="modal">
+                        <div class="modal-content">
+                            <span class="close-btn">&times;</span>
+                            <h2>Modifier les informations de l'animal</h2>
+                            <form id="edit-form" method="post">
+                                <input type="text" name="id" value="{{ animal.id }}" hidden>
+                                
+                                <label for="nom">Nom :</label>
+                                <input type="text" id="nom" name="nom" value="{{ animal.nom }}" required>
+                                
+                                <label for="race">Race :</label>
+                                <input type="text" id="race" name="race" value="{{ animal.race }}" required>
+                                
+                                <label for="age">Âge :</label>
+                                <input type="number" id="age" name="age" value="{{ animal.age }}" required>
+                                
+                                <label for="description">Description :</label>
+                                <input type="text" id="description" name="description" value="{{ animal.description }}" required>
+                                
+                                <label for="genre">Genre :</label>
+                                <select name="genre" id="genre">
+                                    {% if animal.genre == 'male' %}
+                                        <option value="{{ animal.genre }}" selected>{{ animal.genre }}</option>
+                                        <option value="femelle">femelle</option>
+                                    {% else %}
+                                        <option value="{{ animal.genre }}" selected>{{ animal.genre }}</option>
+                                        <option value="male">male</option>
+                                    {% endif %}
+                                </select>
+
+                                <label for="soin">Soin :</label>
+                                <input type="date" id="soin" name="soin" value="{{ animal.soin }}">
+
+                                <label for="soigneur">Soigneur :</label>
+                                <select name="soigneur" id="soigneur">
+                                    {% for soigneur in soigneurs %}
+                                        <option value="{{ soigneur.nom }}" {% if animal.soigneur == soigneur.nom %}selected{% endif %}>
+                                            {{ soigneur.nom }}
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                                
+                                <label for="image">Image :</label>
+                                <input type="text" id="image" name="image" value="{{ animal.image }}" required>
+                                
+                                <label for="password">Mot de passe :</label>
+                                <input type="password" id="password" name="password" required>
+
+                                <button type="submit" name="update" id="update" class="save-btn">Enregistrer</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Fenêtre modale pour supprimer l'animal -->
+                    <div id="modal-{{ animal.nom }}-delete" class="modal">
+                        <div class="modal-content">
+                            <span class="close-btn">&times;</span>
+                            <h2>Supprimer l'animal</h2>
+                            <p>Etes-vous sûr de vouloir supprimer l'animal {{ animal.nom }}?</p>
+                            <form id="delete-form" method="post">
+                                <input type="hidden" name="id" value="{{ animal.id }}">
+
+                                <label for="delete-password"></label>
+                                <input type="password" name="password" id="delete-password" placeholder="Mot de passe" required>
+
+                                <button type="submit" name="delete" class="save-btn">Supprimer</button>
+                            </form>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Zoo Emeral Wilds - Tous droits réservés</p>
+            <p>Suivez-nous sur nos réseaux sociaux : 
+                <a href="https://www.facebook.com/">Facebook</a> | <a href="https://www.instagram.com/">Instagram</a> | <a href="https://x.com/">Twitter</a>
+            </p>
+        </div>
+    </footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const editButtons = document.querySelectorAll('.edit-btn');
+    const deleteButtons = document.querySelectorAll('.delete-btn');
+
+    // Ouvrir le modal de modification
+    editButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const modalId = button.getAttribute('data-modal');
+            const modal = document.getElementById(modalId); 
+            if (modal) {
+                modal.style.display = 'flex';
+            }
+        });
+    });
+
+    // Ouvrir le modal de suppression
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const modalId = button.getAttribute('data-modal');
+            const modal = document.getElementById(modalId); // Ensure this refers to the delete modal
+            if (modal) {
+                modal.style.display = 'flex';
+            }
+        });
+    });
+
+    // Fermer les modals
+    const closeButtons = document.querySelectorAll('.close-btn');
+    closeButtons.forEach(closeBtn => {
+        closeBtn.addEventListener('click', () => {
+            const modal = closeBtn.closest('.modal');
+            if (modal) {
+                modal.style.display = 'none';
+            }
+        });
+    });
+
+    // Fermer les modals en cliquant à l'extérieur
+    window.addEventListener('click', event => {
+        if (event.target.classList.contains('modal')) {
+            event.target.style.display = 'none';
+        }
+    });
+});
+
+</script>
+</body>
+</html>

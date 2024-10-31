@@ -27,12 +27,14 @@
         <input type="text" name="race", placeholder="Race" required>
         <input type="number" name="age" placeholder="Age">
         <input type="text" name="description" placeholder="Description">
+        <input type="text" name="genre" placeholder="Genre" required>
         <input type="text" name="soin" placeholder="Soin">
         <select name="soigneur" id="soigneur" required>
             {% for soigneur in soigneurs %}
                 <option value="{{ soigneur.nom }}">{{ soigneur.nom }}</option>
             {% endfor %}
         </select>
+        <input type="text" name="image">
         <input type="password" name="password" placeholder="Mot de passe" required>
         <button type="submit" name="add" class="submit-button">Ajouter</button>
     </form>
@@ -47,8 +49,10 @@
                 <th>Race</th>
                 <th>Age</th>
                 <th>Description</th>
+                <th>Genre</th>
                 <th>Soin</th>
                 <th>Soigneur</th>
+                <th>Image</th>
                 <th>Mot De Passe</th>
                 <th>Actions</th>
             </tr>
@@ -63,6 +67,7 @@
                     <td><input type="tel" name="race" value="{{ animal.race }}"></td>
                     <td><input type="text" name="age" value="{{ animal.age }}" required></td>
                     <td><input type="text" name="description" value="{{ animal.description }}" required></td>
+                    <td><input type="text" name="genre" value="{{ animal.genre }}" required></td>
                     <td><input type="text" name="soin" value="{{ animal.soin }}" required></td>
                     <td>
                         <select name="soigneur" id="soigneur">
@@ -73,6 +78,7 @@
                             {% endfor %}
                         </select>
                     </td>
+                    <td><input type="text" name="image" value="{{ animal.image }}" required></td>
                     <td><input type="password" name="password" value="" required></td>
                     <td>
                         <button type="submit" name="update" class="submit-button">Mettre à jour</button>
