@@ -291,7 +291,7 @@ def animaux():
         flash("Des informations sont manquantes.", 'danger')
         return redirect(url_for('animaux'))
 
-    if current_user.role in ['admin', 'soigneur']:
+    if current_user.is_authenticated and current_user.role in ['admin', 'soigneur']:
         soigneurs = Soigneur.query.all()
         return render_template("./animaux.html", animaux=animaux, soigneurs=soigneurs)
 

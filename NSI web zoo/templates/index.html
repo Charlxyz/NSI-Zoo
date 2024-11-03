@@ -25,7 +25,16 @@
                     <li><a href="/tarifs">Tarifs</a></li>
                     <li><a href="/contact">Contact</a></li>
                 </ul>
-            </nav>
+                {% if not current_user.is_authenticated %}
+                <ul class="nav-right">
+                    <li><a href="{{ url_for('login') }}">Se connecter</a></li>
+                </ul>
+                {% else %}
+                <ul class="nav-right">
+                    <li><a href="{{ url_for('logout') }}">Se déconnecter</a></li>
+                </ul>
+                {% endif %}
+            </nav>          
         </div>
     </header>
     <div class="video-container">

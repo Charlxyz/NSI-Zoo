@@ -5,128 +5,84 @@
     box-sizing: border-box;
 }
 
-html, body{
-    height: 100%;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-}
-
 /* Corps de la page */
 body {
-    font-family: 'Poppins', sans-serif; /* Application de la nouvelle police */
-    padding-top: 60px; /* Espace pour le header fixe */
-    background-color: #FAF0E6; /* Beige lin délicat */
-    flex: 1;
+    font-family: 'Poppins', sans-serif;
+    padding-top: 60px;
+    background-color: #FAF0E6;
 }
 
 /* Conteneur principal pour centrer le contenu */
 .container {
-    width: 60%; /* Largeur à 60% */
+    width: 60%;
     margin: 0 auto;
-    flex: 1;
 }
 
 /* Header */
 header {
-    background-color: #394228; /* Couleur claire */
-    color: #FAF0E6; /* Texte en noir */
-    padding: 5px 0; /* Diminuer le padding vertical pour le header */
+    background-color: #394228;
+    color: #FAF0E6;
+    padding: 10px 0;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
-    transition: background-color 0.3s ease, padding 0.3s ease;
 }
 
 /* Navigation */
 nav {
     display: flex;
-    align-items: center; /* Centre verticalement les éléments */
-    justify-content: center; /* Centre horizontalement tous les éléments */
-    height: 50px; /* Réduction de la hauteur pour un header moins volumineux */
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    padding: 0 20px;
 }
 
 /* Liens de navigation */
 nav ul {
     list-style: none;
     display: flex;
-    margin: 0; /* Suppression de la marge */
+    gap: 20px;
 }
 
-nav ul li {
-    margin: 0 2px; /* Réduire l'espace entre chaque lien pour les rapprocher encore plus */
-}
+/* Style des éléments de navigation */
 nav ul li a {
-    color: #FAF0E6; /* Texte en noir */
+    color: #FAF0E6;
     text-decoration: none;
-    font-size: 24px; /* Augmenter la taille de police */
-    font-weight: 600; /* Gras pour le texte */
-    padding: 5px; /* Diminuer le padding autour des liens */
-    transition: color 0.3s ease; /* Transition pour le changement de couleur */
+    font-size: 18px;
+    font-weight: 600;
+    padding: 5px;
+    transition: color 0.3s ease;
 }
 
 nav ul li a:hover {
-    color: #B8E986; /* Gris clair au survol */
+    color: #B8E986;
 }
 
-/* Logo centré */
+/* Logo */
 .logo img {
-    max-width: 120px; /* Augmentez la taille du logo */
+    max-width: 70px;
     height: auto;
 }
 
-.logo img {
-    max-width: 70px; /* Augmentez la taille du logo */
-    height: auto;
-}
-
+/* Sections de navigation à gauche et à droite */
 .nav-left, .nav-right {
     display: flex;
-    flex: 1; /* Prend toute la place disponible */
-    justify-content: center; /* Centre les éléments */
-    margin: 0 5px; /* Réduit l'espace autour des groupes de liens */
-}
-
-
-.nav-left {
-    margin-right: 5px; /* Réduit l'espace à droite des liens de gauche */
-}
-
-.nav-right {
-    margin-left: 5px; /* Réduit l'espace à gauche des liens de droite */
-}
-
-/* Hero Section */
-/* Vidéo en arrière-plan */
-.video-container {
-    position: absolute; /* Positionner la vidéo */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%; /* Prendre toute la hauteur */
-    z-index: -1; /* Envoyer la vidéo derrière le contenu */
-    overflow: hidden; /* Pour éviter les débordements */
-}
-
-.video-container video {
-    width: 100%; /* S'assurer que la vidéo prend toute la largeur */
-    height: 100%; /* S'assurer que la vidéo prend toute la hauteur */
-    object-fit: cover; /* Couvrir l'élément sans déformer */
+    align-items: center;
 }
 
 /* Section Hero */
 .hero {
-    background-color: transparent; /* Enlever le fond */
-    height: 80vh; /* Garder la même hauteur */
+    background-color: transparent;
+    height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #FAF0E6; /* Couleur du texte */
+    color: #FAF0E6;
     text-align: center;
-    position: relative; /* Positionner relativement pour les éléments enfants */
-    z-index: 1; /* S'assurer que le contenu est au-dessus de la vidéo */
+    position: relative;
+    z-index: 1;
 }
 
 .hero h2 {
@@ -139,7 +95,7 @@ nav ul li a:hover {
 }
 
 .hero .btn {
-    background-color: #1DB954; /* Vert perroquet */
+    background-color: #1DB954;
     color: white;
     padding: 10px 20px;
     text-decoration: none;
@@ -149,20 +105,20 @@ nav ul li a:hover {
 }
 
 .hero .btn:hover {
-    background-color: #32A852; /* Vert gazon */
+    background-color: #32A852;
 }
 
 /* Section Nos Animaux */
 .animaux {
     padding: 50px 0;
-    background-color: #228B22; /* Vert forêt */
+    background-color: #228B22;
     text-align: center;
 }
 
 .animaux h2 {
     font-size: 36px;
     margin-bottom: 40px;
-    color: #FAF0E6; /* Beige lin délicat */
+    color: #FAF0E6;
 }
 
 .animal-grid {
@@ -172,8 +128,8 @@ nav ul li a:hover {
 }
 
 .animal {
-    background-color: #B8E986; /* Vert pomme */
-    border: 2px solid #4B5320; /* Vert bouteille */
+    background-color: #B8E986;
+    border: 2px solid #4B5320;
     padding: 20px;
     border-radius: 10px;
     margin: 10px;
@@ -189,41 +145,70 @@ nav ul li a:hover {
 .animal h3 {
     font-size: 24px;
     margin: 15px 0 10px;
-    color: #013220; /* Vert sapin */
+    color: #013220;
 }
 
 .animal p {
     font-size: 16px;
-    color: #013220; /* Vert sapin */
+    color: #013220;
 }
 
 /* Section Tarifs */
-.tarifs {
-    padding: 50px 0;
+.tarifs-section {
     text-align: center;
-    background-color: #FAF0E6; /* Beige lin délicat */
+    padding: 50px 0;
+    background-color: #FAF0E6;
 }
 
-.tarifs h2 {
+.tarifs-section h2 {
     font-size: 36px;
-    margin-bottom: 20px;
-    color: #013220; /* Vert sapin */
+    margin-bottom: 30px;
+    color: #394228;
 }
 
-.tarifs ul {
-    list-style: none;
-    font-size: 20px;
-    color: #013220; /* Vert sapin */
+/* Conteneur des cartes de tarifs */
+.tarifs-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
 }
 
-.tarifs ul li {
+/* Cartes individuelles */
+.tarif-card {
+    background-color: #3A6B35;
+    color: #FAF0E6;
+    border-radius: 10px;
+    padding: 20px;
+    width: 250px;
+    height: 400px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.tarif-card h3 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.tarif-card p {
+    font-size: 18px;
     margin: 10px 0;
+    padding: 10px 0;
+    border-top: 1px solid rgba(250, 240, 230, 0.3);
+}
+
+.tarif-card p:first-of-type {
+    border-top: none;
 }
 
 /* Footer */
 footer {
-    background-color: #394228; /* Vert encore plus foncé */
-    color: #FAF0E6; /* Beige lin délicat */
+    background-color: #394228;
+    color: #FAF0E6;
     text-align: center;
     padding: 20px 0;
     margin-top: auto;
@@ -234,35 +219,35 @@ footer p {
 }
 
 footer a {
-    color: #FAF0E6; /* Beige lin délicat */
+    color: #FAF0E6;
     text-decoration: none;
 }
 
 footer a:hover {
-    color: #B8E986; /* Vert pomme */
+    color: #B8E986;
 }
 
-/* Conteneur du formulaire */
+/* Conteneur du formulaire de contact */
 .contact-form {
-    max-width: 1000px; /* Largeur maximale augmentée */
-    margin: 50px auto; /* Centre le formulaire horizontalement */
+    max-width: 1000px;
+    margin: 50px auto;
     padding: 40px;
-    background-color: #FAF0E6; /* Beige lin délicat */
-    border: 2px solid #394228; /* Bordure verte foncée */
+    background-color: #FAF0E6;
+    border: 2px solid #394228;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .contact-form h2 {
     text-align: center;
-    color: #013220; /* Vert sapin */
+    color: #013220;
     margin-bottom: 20px;
 }
 
 /* Disposition en deux colonnes */
 .form-row {
     display: flex;
-    gap: 40px; /* Plus d'espacement entre les colonnes */
+    gap: 40px;
 }
 
 /* Colonne individuelle */
@@ -273,7 +258,7 @@ footer a:hover {
 .contact-form label {
     display: block;
     margin-bottom: 5px;
-    color: #013220; /* Vert sapin */
+    color: #013220;
     font-weight: 600;
 }
 
@@ -284,15 +269,9 @@ footer a:hover {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
-    border: 1px solid #394228; /* Bordure verte foncée */
+    border: 1px solid #394228;
     border-radius: 5px;
     font-size: 16px;
-}
-
-/* Agrandir la zone de texte pour le message */
-.contact-form textarea {
-    height: 300px; /* Augmente la hauteur pour plus de visibilité */
-    resize: vertical;
 }
 
 /* Bouton Envoyer */
@@ -303,8 +282,8 @@ footer a:hover {
 
 .contact-form button {
     padding: 10px 30px;
-    background-color: #1DB954; /* Vert perroquet */
-    color: #FAF0E6; /* Beige lin délicat */
+    background-color: #1DB954;
+    color: #FAF0E6;
     border: none;
     border-radius: 5px;
     font-size: 18px;
@@ -313,59 +292,5 @@ footer a:hover {
 }
 
 .contact-form button:hover {
-    background-color: #32A852; /* Vert gazon */
+    background-color: #32A852;
 }
-
-/* Section Tarifs */
-.tarifs-section {
-    text-align: center;
-    padding: 50px 0;
-    background-color: #FAF0E6; /* Beige lin délicat */
-}
-
-.tarifs-section h2 {
-    font-size: 36px;
-    margin-bottom: 30px;
-    color: #394228; /* Vert foncé */
-}
-
-/* Conteneur des cartes de tarifs */
-.tarifs-container {
-    display: flex;
-    flex-direction: row; /* Aligne les cartes horizontalement */
-    justify-content: center;
-    gap: 30px;
-}
-
-/* Cartes individuelles */
-.tarif-card {
-    background-color: #3A6B35; /* Vert plus foncé */
-    color: #FAF0E6; /* Texte clair */
-    border-radius: 10px;
-    padding: 20px;
-    width: 250px; /* Largeur des cartes */
-    height: 400px; /* Hauteur des cartes */
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.tarif-card h3 {
-    font-size: 28px; /* Taille du titre */
-    margin-bottom: 10px;
-}
-
-/* Séparateurs pour chaque section */
-.tarif-card p {
-    font-size: 18px;
-    margin: 10px 0;
-    padding: 10px 0;
-    border-top: 1px solid rgba(250, 240, 230, 0.3); /* Ligne de séparation discrète */
-}
-
-.tarif-card p:first-of-type {
-    border-top: none; /* Pas de ligne en haut de la première section */
-}
-

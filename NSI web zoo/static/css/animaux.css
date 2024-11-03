@@ -7,27 +7,62 @@
 
 /* Corps de la page */
 body {
-    font-family: 'Poppins', sans-serif; /* Application de la nouvelle police */
-    padding-top: 60px; /* Espace pour le header fixe */
-    background-color: #FAF0E6; /* Beige lin délicat */
+    font-family: 'Poppins', sans-serif;
+    padding-top: 60px;
+    background-color: #FAF0E6;
 }
 
 /* Conteneur principal pour centrer le contenu */
 .container {
-    width: 80%; /* Largeur à 80% */
-    margin: 0 auto; /* Centre le conteneur */
+    width: 60%;
+    margin: 0 auto;
 }
 
 /* Header */
 header {
-    background-color: #394228; /* Couleur claire */
-    color: #FAF0E6; /* Texte en noir */
-    padding: 5px 0; /* Diminuer le padding vertical pour le header */
-    position: fixed; /* Fixer le header en haut */
+    background-color: #394228;
+    color: #FAF0E6;
+    padding: 10px 0;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly; /* Équilibre l’espace entre tous les éléments */
+    height: 50px;
+}
+
+/* Liens de navigation */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px; /* Équilibre l'espace entre les liens */
+}
+
+/* Style des éléments de navigation */
+nav ul li a {
+    color: #FAF0E6;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 5px;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #B8E986;
+}
+
+/* Logo */
+.logo img {
+    max-width: 70px;
+    height: auto;
 }
 
 /* Titre des animaux */
@@ -36,49 +71,6 @@ header {
     margin-top: 70px; /* Marge pour le titre sous le header */
     font-size: 36px; /* Taille du texte du titre */
     margin-bottom: 20px; /* Marge en bas du titre */
-}
-
-/* Navigation */
-nav {
-    display: flex; /* Disposition en flexbox */
-    align-items: center; /* Centre verticalement les éléments */
-    justify-content: center; /* Centre horizontalement tous les éléments */
-    height: 50px; /* Hauteur du header */
-}
-
-/* Liens de navigation */
-nav ul {
-    list-style: none;
-    display: flex;
-    margin: 0; /* Suppression de la marge */
-}
-
-nav ul li {
-    margin: 0 2px; /* Espace entre chaque lien */
-}
-
-nav ul li a {
-    color: #FAF0E6; /* Texte en noir */
-    text-decoration: none;
-    font-size: 24px; /* Taille de police */
-    font-weight: 600; /* Gras pour le texte */
-    padding: 5px; /* Diminuer le padding autour des liens */
-    transition: color 0.3s ease; /* Transition pour le changement de couleur */
-}
-
-nav ul li a:hover {
-    color: #B8E986; /* Couleur au survol */
-}
-
-img {
-    max-width: 100%; /* Assurez-vous que l'image ne depasse pas la largeur du conteneur */
-    height: auto; /* Garde l'aspect ratio */
-}
-
-/* Logo centré */
-.logo img {
-    max-width: 70px; /* Augmentez la taille du logo */
-    height: auto; /* Garde l'aspect ratio */
 }
 
 /* Section des animaux */

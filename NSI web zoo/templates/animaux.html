@@ -17,16 +17,23 @@
                     <li><a href="/">Accueil</a></li>
                     <li><a href="/animaux">Nos Animaux</a></li>
                 </ul>
-                
                 <!-- Logo au centre -->
                 <div class="logo">
                     <img src="../static/img/log.jpg" alt="Logo du zoo">
                 </div>
-                
                 <ul class="nav-right">
                     <li><a href="/tarifs">Tarifs</a></li>
                     <li><a href="/contact">Contact</a></li>
                 </ul>
+                {% if not current_user.is_authenticated %}
+                <ul class="nav-right">
+                    <li><a href="{{ url_for('login') }}">Se connecter</a></li>
+                </ul>
+                {% else %}
+                <ul class="nav-right">
+                    <li><a href="{{ url_for('logout') }}">Se déconnecter</a></li>
+                </ul>
+                {% endif %}
             </nav>
         </div>
     </header>

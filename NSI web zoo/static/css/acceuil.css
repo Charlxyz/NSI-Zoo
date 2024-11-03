@@ -7,106 +7,87 @@
 
 /* Corps de la page */
 body {
-    font-family: 'Poppins', sans-serif; /* Application de la nouvelle police */
-    padding-top: 60px; /* Espace pour le header fixe */
-    background-color: #FAF0E6; /* Beige lin délicat */
-    flex: 1;
+    font-family: 'Poppins', sans-serif;
+    padding-top: 60px;
+    background-color: #FAF0E6;
 }
 
 /* Conteneur principal pour centrer le contenu */
 .container {
-    width: 60%; /* Largeur à 60% */
+    width: 60%;
     margin: 0 auto;
-    flex: 1;
 }
 
 /* Header */
 header {
-    background-color: #394228; /* Couleur claire */
-    color: #FAF0E6; /* Texte en noir */
-    padding: 5px 0; /* Diminuer le padding vertical pour le header */
+    background-color: #394228;
+    color: #FAF0E6;
+    padding: 10px 0;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
-    transition: background-color 0.3s ease, padding 0.3s ease;
 }
 
 /* Navigation */
 nav {
     display: flex;
-    align-items: center; /* Centre verticalement les éléments */
-    justify-content: center; /* Centre horizontalement tous les éléments */
-    height: 50px; /* Réduction de la hauteur pour un header moins volumineux */
+    align-items: center;
+    justify-content: space-evenly; /* Équilibre l’espace entre tous les éléments */
+    height: 50px;
 }
 
 /* Liens de navigation */
 nav ul {
     list-style: none;
     display: flex;
-    margin: 0; /* Suppression de la marge */
+    gap: 20px; /* Équilibre l'espace entre les liens */
 }
 
-nav ul li {
-    margin: 0 2px; /* Réduire l'espace entre chaque lien pour les rapprocher encore plus */
-}
+/* Style des éléments de navigation */
 nav ul li a {
-    color: #FAF0E6; /* Texte en noir */
+    color: #FAF0E6;
     text-decoration: none;
-    font-size: 24px; /* Augmenter la taille de police */
-    font-weight: 600; /* Gras pour le texte */
-    padding: 5px; /* Diminuer le padding autour des liens */
-    transition: color 0.3s ease; /* Transition pour le changement de couleur */
+    font-size: 18px;
+    font-weight: 600;
+    padding: 5px;
+    transition: color 0.3s ease;
 }
 
 nav ul li a:hover {
-    color: #B8E986; /* Gris clair au survol */
+    color: #B8E986;
 }
 
-/* Logo centré */
+/* Logo */
 .logo img {
-    max-width: 120px; /* Augmentez la taille du logo */
+    max-width: 70px;
     height: auto;
 }
 
-.logo img {
-    max-width: 70px; /* Augmentez la taille du logo */
-    height: auto;
-}
-
+/* Position des éléments de navigation gauche et droite */
 .nav-left, .nav-right {
     display: flex;
-    flex: 1; /* Prend toute la place disponible */
-    justify-content: center; /* Centre les éléments */
-    margin: 0 5px; /* Réduit l'espace autour des groupes de liens */
-}
-
-
-.nav-left {
-    margin-right: 5px; /* Réduit l'espace à droite des liens de gauche */
-}
-
-.nav-right {
-    margin-left: 5px; /* Réduit l'espace à gauche des liens de droite */
+    align-items: center;
+    gap: 10px;
 }
 
 /* Hero Section */
 /* Vidéo en arrière-plan */
 .video-container {
-    position: absolute; /* Positionner la vidéo */
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%; /* Prendre toute la hauteur */
-    z-index: -1; /* Envoyer la vidéo derrière le contenu */
-    overflow: hidden; /* Pour éviter les débordements */
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
 }
 
 .video-container video {
-    width: 100%; /* S'assurer que la vidéo prend toute la largeur */
-    height: 100%; /* S'assurer que la vidéo prend toute la hauteur */
-    object-fit: cover; /* Couvrir l'élément sans déformer */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 /* Section Hero */
@@ -114,21 +95,21 @@ nav ul li a:hover {
     background-color: transparent;
     height: 80vh;
     display: flex;
-    flex-direction: column; /* Place les éléments en colonne */
-    align-items: center; /* Alignement des éléments à gauche */
-    justify-content: center; /* Centrage vertical */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     color: #FAF0E6;
-    padding-left: 20px; /* Ajoute de l'espace à gauche pour décaler les éléments */
+    padding-left: 20px;
 }
 
 .hero h2 {
     font-size: 50px;
-    margin-bottom: 10px; /* Ajoute un espacement pour éviter qu'ils soient trop proches */
+    margin-bottom: 10px;
 }
 
 .hero p {
     font-size: 24px;
-    margin: 10px 0 20px; /* Espace autour du paragraphe */
+    margin: 10px 0 20px;
 }
 
 .hero .btn {
@@ -139,18 +120,17 @@ nav ul li a:hover {
     font-size: 18px;
     border-radius: 5px;
     cursor: pointer;
-    align-self: center; /* Positionne le bouton à gauche */
+    align-self: center;
 }
 
-
 .hero .btn:hover {
-    background-color: #32A852; /* Vert gazon */
+    background-color: #32A852;
 }
 
 /* Footer */
 footer {
-    background-color: #394228; /* Vert encore plus foncé */
-    color: #FAF0E6; /* Beige lin délicat */
+    background-color: #394228;
+    color: #FAF0E6;
     text-align: center;
     padding: 20px 0;
     margin-top: auto;
@@ -161,12 +141,12 @@ footer p {
 }
 
 footer a {
-    color: #FAF0E6; /* Beige lin délicat */
+    color: #FAF0E6;
     text-decoration: none;
 }
 
 footer a:hover {
-    color: #B8E986; /* Vert pomme */
+    color: #B8E986;
 }
 
 /* Aperçu des Sections */
